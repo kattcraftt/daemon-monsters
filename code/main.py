@@ -1,7 +1,7 @@
 from settings import *
 from pytmx.util_pygame import load_pygame
 
-from sprites import Sprite, AnimatedSprite
+from sprites import Sprite, AnimatedSprite, MonsterPatchSprite
 from entities import Player, Character
 from groups import AllSprites
 
@@ -32,7 +32,6 @@ class Game:
             'characters': all_character_import('../graphics/characters')
         }
 
-
     def setup(self, tmx_map, player_start_pos):
         # terrain
         for layer in ['Terrain', 'Terrain Top']:
@@ -60,10 +59,7 @@ class Game:
 
         # grass patches
         for obj in tmx_map.get_layer_by_name('Monsters'):
-            if obj.name == 'top':
-                Sprite((obj.x, obj.y), obj.image, self.all_sprites)
-            else:
-                Sprite((obj.x, obj.y), obj.image, self.all_sprites)
+            MonsterPatchSprite((obj.x, obj.y), obj.image, self.all_sprites, obj.properties['biome'])
 
         # player
         for obj in tmx_map.get_layer_by_name('Entities'):
@@ -81,7 +77,6 @@ class Game:
                     frames = self.overworld_frames['characters'][obj.properties['graphic']],
                     groups= self.all_sprites,
                     facing_direction = obj.properties['direction'])
-
 
     def run(self):
         while True:

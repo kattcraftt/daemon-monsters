@@ -1,5 +1,6 @@
-from support import import_image
 from settings import *
+from support import import_image
+from entities import Entity
 
 class AllSprites(pygame.sprite.Group):
     def __init__(self):
@@ -18,4 +19,6 @@ class AllSprites(pygame.sprite.Group):
 
         for layer in (bg_sprites, main_sprites, fg_sprites):
             for sprite in layer:
+                if isinstance(sprite, Entity):
+                    self.display_surface.blit(self.shadow_surf, sprite.rect.topleft + self.offset + vector(40, 110))
                 self.display_surface.blit(sprite.image, sprite.rect.topleft + self.offset)
