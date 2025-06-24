@@ -22,7 +22,7 @@ TRAINER_DATA = {
 	'o3': {
 		'monsters': {0: ('Atrox', 14), 1: ('Pouch', 15), 2: ('Draem', 13), 3: ('Cindrill', 13)},
 		'dialog': {
-			'default': ['I love skating!', 'FIGHT!'], 
+			'default': ['I love fried chicken!', 'RA SUNTUKAN!'],
 			'defeated': ['Good luck with the boss', 'It\'s so cold in here']},
 		'directions': ['left', 'right', 'up', 'down'],
 		'look_around': True,
@@ -32,7 +32,7 @@ TRAINER_DATA = {
 	'o4': {
 		'monsters': {0: ('Friolera', 25), 1: ('Gulfin', 20), 2: ('Atrox',24), 3: ('Finiette', 30)},
 		'dialog': {
-			'default': ['I love skating!', 'FIGHT!'], 
+			'default': ['I love cats!', 'RA SUNTUKAN!'],
 			'defeated': ['Good luck with the boss', 'It\'s so cold in here']},
 		'directions': ['right'],
 		'look_around': True,
@@ -42,7 +42,7 @@ TRAINER_DATA = {
 	'o5': {
 		'monsters': {0: ('Plumette', 20), 1: ('Ivieron', 22), 2: ('Atrox',24), 3: ('Pouch', 19)},
 		'dialog': {
-			'default': ['I love skating!', 'FIGHT!'], 
+			'default': ['I love dogs!', 'RA SUNTUKAN!'],
 			'defeated': ['Good luck with the boss', 'It\'s so cold in here']},
 		'directions': ['up', 'right'],
 		'look_around': True,
@@ -52,7 +52,7 @@ TRAINER_DATA = {
 	'o6': {
 		'monsters': {0: ('Finsta', 15), 1: ('Finsta', 15), 2: ('Finsta', 15)},
 		'dialog': {
-			'default': ['I love skating!', 'FIGHT!'], 
+			'default': ['ugh, Mr. Kupal is here again!', 'FIGHT!'],
 			'defeated': ['Good luck with the boss', 'It\'s so cold in here']},
 		'directions': ['down'],
 		'look_around': False,
