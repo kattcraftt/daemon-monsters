@@ -1,11 +1,14 @@
 from game_data import *
 from settings import *
 from pytmx.util_pygame import load_pygame
+from random import randint
 
 from sprites import Sprite, AnimatedSprite, MonsterPatchSprite, BorderSprite, CollidableSprite, TransitionSprite
 from entities import Player, Character
 from dialog import DialogTree
 from groups import AllSprites
+from monster_index import MonsterIndex
+from monster import Monster
 
 from support import *
 
@@ -16,11 +19,26 @@ class Game:
         pygame.display.set_caption("Daemon Monsters")
         self.clock = pygame.time.Clock()
 
+        # player monsters
+        self.player_monsters = {
+            0: Monster('Ivieron', 1),
+            1: Monster('Atrox', 1),
+            2: Monster('Cindrill', 1),
+        }
+        for monster in self.player_monsters.values():
+            monster.xp += randint(0, monster.level * 100)
+        self.test_monsters = {
+            0: Monster('Finsta', 15),
+            1: Monster('Pouch', 13),
+            2: Monster('Larvea', 12),
+        }
+
         # groups
         self.all_sprites = AllSprites()
         self.collision_sprites = pygame.sprite.Group()
         self.character_sprites = pygame.sprite.Group()
         self.transition_sprites = pygame.sprite.Group()
+        self.monster_sprites = pygame.sprite.Group()
 
         # transition / tint
         self.transition_target = None
@@ -33,18 +51,33 @@ class Game:
         self.import_assets()
         self.setup(self.tmx_maps['world'], 'house')
 
+        # overlay
         self.dialog_tree = None
+        self.monster_index = MonsterIndex(self.player_monsters, self.fonts, self.monster_frames)
+        self.index_open = False
 
     def import_assets(self):
         self.tmx_maps = tmx_importer('../data/maps')
+
         self.overworld_frames = {
             'water': import_folder('../graphics/tilesets/water'),
             'coast': coast_importer(24, 12, '../graphics/tilesets/coast'),
             'characters': all_character_import('../graphics/characters')
         }
 
+        self.monster_frames = {
+            'icons': import_folder_dict('../graphics/icons'),
+            'monsters': monster_importer(4, 2, '../graphics/monsters'),
+            'ui': import_folder_dict('../graphics/ui'),
+            'attacks': attack_importer('../graphics/attacks')
+        }
+        self.monster_frames['outlines'] = outline_creator(self.monster_frames['monsters'], 4)
+
         self.fonts = {
             'dialog': pygame.font.Font('../graphics/fonts/PixeloidSans.ttf', 30),
+            'regular': pygame.font.Font(join('../graphics/fonts/PixeloidSans.ttf'), 18),
+            'small': pygame.font.Font(join('../graphics/fonts/PixeloidSans.ttf'), 14),
+            'bold': pygame.font.Font(join('../graphics/fonts/dogicapixelbold.otf'), 20),
         }
 
     def setup(self, tmx_map, player_start_pos):
@@ -122,6 +155,10 @@ class Game:
                         self.create_dialog(character)
                         character.can_rotate = False
 
+            if keys[pygame.K_RETURN]:
+                self.index_open = not self.index_open
+                self.player.blocked = not self.player.blocked
+
     def create_dialog(self, character):
         if not self.dialog_tree:
             self.dialog_tree = DialogTree(character, self.player, self.all_sprites, self.fonts['dialog'], self.end_dialog)
@@ -166,11 +203,12 @@ class Game:
             self.input()
             self.transition_check()
             self.all_sprites.update(dt)
-            self.display_surface.fill('black')
+
             self.all_sprites.draw(self.player)
 
             # overlays
             if self.dialog_tree: self.dialog_tree.update()
+            if self.index_open:  self.monster_index.update(dt)
 
             self.tint_screen(dt)
             pygame.display.update()
