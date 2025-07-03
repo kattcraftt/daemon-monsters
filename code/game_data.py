@@ -22,7 +22,7 @@ TRAINER_DATA = {
 	'o3': {
 		'monsters': {0: ('Atrox', 14), 1: ('Pouch', 15), 2: ('Draem', 13), 3: ('Cindrill', 13)},
 		'dialog': {
-			'default': ['I love fried chicken!', 'RA SUNTUKAN!'],
+			'default': ['I love fried chicken!', 'FIGHT!'],
 			'defeated': ['Good luck with the boss', 'It\'s so cold in here']},
 		'directions': ['left', 'right', 'up', 'down'],
 		'look_around': True,
@@ -193,7 +193,7 @@ TRAINER_DATA = {
 		'monsters': {0: ('Cindrill', 15), 1: ('Jacana', 20), 2: ('Draem',24), 3: ('Atrox', 30)},
 		'dialog': {
 			'default': ['This place feels kinda warm...', 'fight!'], 
-			'defeated': ['Congratultion!']},
+			'defeated': ['Congratulation!']},
 		'directions': ['right', 'left'],
 		'look_around': False,
 		'defeated': False,
@@ -203,7 +203,7 @@ TRAINER_DATA = {
 		'monsters': {0: ('Cindrill', 15), 1: ('Jacana', 20), 2: ('Draem',24), 3: ('Atrox', 30)},
 		'dialog': {
 			'default': ['This place feels kinda warm...', 'fight!'], 
-			'defeated': ['Congratultion!']},
+			'defeated': ['Congratulation!']},
 		'directions': ['right', 'left'],
 		'look_around': True,
 		'defeated': False,
@@ -213,7 +213,7 @@ TRAINER_DATA = {
 		'monsters': {0: ('Cindrill', 15), 1: ('Jacana', 20), 2: ('Draem',24), 3: ('Atrox', 30)},
 		'dialog': {
 			'default': ['This place feels kinda warm...', 'fight!'], 
-			'defeated': ['Congratultion!']},
+			'defeated': ['Congratulation!']},
 		'directions': ['up', 'right'],
 		'look_around': True,
 		'defeated': False,
@@ -223,7 +223,7 @@ TRAINER_DATA = {
 		'monsters': {0: ('Cindrill', 15), 1: ('Jacana', 20), 2: ('Draem',24), 3: ('Atrox', 30)},
 		'dialog': {
 			'default': ['This place feels kinda warm...', 'fight!'], 
-			'defeated': ['Congratultion!']},
+			'defeated': ['Congratulation!']},
 		'directions': ['left'],
 		'look_around': True,
 		'defeated': False,
@@ -233,7 +233,7 @@ TRAINER_DATA = {
 		'monsters': {0: ('Cindrill', 15), 1: ('Jacana', 20), 2: ('Draem',24), 3: ('Atrox', 30)},
 		'dialog': {
 			'default': ['This place feels kinda warm...', 'fight!'], 
-			'defeated': ['Congratultion!']},
+			'defeated': ['Congratulation!']},
 		'directions': ['right'],
 		'look_around': True,
 		'defeated': False,
@@ -243,7 +243,7 @@ TRAINER_DATA = {
 		'monsters': {0: ('Cindrill', 15), 1: ('Jacana', 20), 2: ('Draem',24), 3: ('Atrox', 30)},
 		'dialog': {
 			'default': ['Time to bring the heat', 'fight!'], 
-			'defeated': ['Congratultion!']},
+			'defeated': ['Congratulation!']},
 		'directions': ['down'],
 		'look_around': False,
 		'defeated': False,
@@ -331,13 +331,13 @@ MONSTER_DATA = {
 
 ATTACK_DATA = {
 	'burn':       {'target': 'opponent', 'amount': 2,    'cost': 15, 'element': 'fire',   'animation': 'fire'},
-	'heal':       {'target': 'player',   'amount': -1.2, 'cost': 15, 'element': 'plant',  'animation': 'green'},
+	'heal':       {'target': 'player',   'amount': -1.2, 'cost': 30, 'element': 'plant',  'animation': 'green'},
 	'battlecry':  {'target': 'player',   'amount': 1.4,  'cost': 20, 'element': 'normal', 'animation': 'green'},
 	'spark':      {'target': 'opponent', 'amount': 1.1,  'cost': 20, 'element': 'fire',   'animation': 'fire'},
 	'scratch':    {'target': 'opponent', 'amount': 1.2,  'cost': 20, 'element': 'normal', 'animation': 'scratch'},
 	'splash':     {'target': 'opponent', 'amount': 2,    'cost': 15, 'element': 'water',  'animation': 'splash'},
 	'fire':       {'target': 'opponent', 'amount': 2,    'cost': 15, 'element': 'fire',   'animation': 'fire'},
 	'explosion':  {'target': 'opponent', 'amount': 2,    'cost': 90, 'element': 'fire',   'animation': 'explosion'},
-	'annihilate': {'target': 'opponent', 'amount': 2,    'cost': 15, 'element': 'fire',   'animation': 'explosion'},
+	'annihilate': {'target': 'opponent', 'amount': 3,    'cost': 30, 'element': 'fire',   'animation': 'explosion'},
 	'ice':        {'target': 'opponent', 'amount': 2,    'cost': 15, 'element': 'water',  'animation': 'ice'},
 }
